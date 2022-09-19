@@ -5,7 +5,7 @@ import {Lecturer} from "./models/Lecturer";
 const express = require("express");
 const {languages} = require("./consts");
 const app = express();
-const port = process.env.PORT || 8080;
+const port: number = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
     res.send(`Lecturers' server is up and running.`);
@@ -26,7 +26,7 @@ function getLanguagesNames(req, res) {
 function getLecturersByLanguageName(req, res) {
     const languageName: string = req.params.name;
     const languageId: number = (languages.filter((language: Language) => language.name === languageName)) ?? [0]; //Guess that there is only one languageName per id.
-    let lecturersByLanguageId = lecturers.map((lecturer: Lecturer) => lecturer.languages.includes(languageId));
+    let lecturersByLanguageId: Lecturer[] = lecturers.filter((lecturer: Lecturer) => lecturer.languages.includes(languageId));
     res.send(200, lecturersByLanguageId);
 }
 
