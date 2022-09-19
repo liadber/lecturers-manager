@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Manager of all the lecturers data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Liad Bercovitch",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
