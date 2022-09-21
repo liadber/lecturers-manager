@@ -1,36 +1,22 @@
-import {lecturers} from "./consts";
-import {Language} from "./models/Language";
-import {Lecturer} from "./models/Lecturer";
+import express, {NextFunction, Request, Response} from "express";
+import {lecturersRouter} from "./routes/lecturers";
 
-const express = require("express");
-const {languages} = require("./consts");
 const app = express();
-const port: number = process.env.PORT || 8080;
+const port: number = (process.env.PORT ? parseInt(process.env.PORT) : false) || 8080;
 
-app.get("/", (req, res) => {
-    res.send(`Lecturers' server is up and running.`);
+app.use('/lecturers', lecturersRouter);
+
+app.get("/", (req: Request, res: Response) => {
+    res.status(200).json(`Lecturers' server is up and running.`);
 });
 
-app.get("/api/getLecturers", getLecturers);
-app.get("/api/getLanguagesNames", getLanguagesNames);
-app.get("/api/getLecturersByLanguageName:name", getLecturersByLanguageName);
+app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
+    console.log(error);
+    const status = 500;
+    const message = error.message;
+    res.status(status).json({message: message});
+});
 
-function getLecturers(req, res) {
-    res.send(200, lecturers);
-}
-
-function getLanguagesNames(req, res) {
-    res.send(200, languages.map(language => language.name));
-}
-
-function getLecturersByLanguageName(req, res) {
-    const languageName: string = req.params.name;
-    const languageId: number = (languages.filter((language: Language) => language.name === languageName)) ?? [0]; //Guess that there is only one languageName per id.
-    let lecturersByLanguageId: Lecturer[] = lecturers.filter((lecturer: Lecturer) => lecturer.languages.includes(languageId));
-    res.send(200, lecturersByLanguageId);
-}
-
-// start the Express server
 app.listen(port, () => {
-
+    console.log(`Server running at http://localhost:${port}/`);
 });
