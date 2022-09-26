@@ -1,0 +1,32 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <span>Lecturers Manager</span>
+</div>
+
+<div class="content" role="main">
+  <h2>Lecturers List</h2>
+  <p>choose programming language and you will see all the lecturers that learn this language.</p>
+<div class="filter-tags-container">
+  <input type="hidden" #selection>
+  <div class="card filter-tag" (click)="selection.value = 'all'">
+    <span>all</span>
+  </div>
+  <div class="card filter-tag">
+    <span (click)="onFetchLecturers()">NodeJs</span>
+  </div>
+</div>
+  <div class="cards-container">
+    <a class="card list-card">
+      <span>Lectures:</span>
+    </a>
+    <a class="card details-card">
+      <span>Lecturer's information:</span>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    Created by Liad Berovitch
+  </footer>
+</div>
+
