@@ -13,6 +13,8 @@ export abstract class LecturersController {
         res.status(200).json({languagesNames: languages.map((language: Language) => language.name)});
     }
 
+    /**IMPLEMENTING THE LECTURERS FILTERING FUNCTIONALITY HERE:**/
+
     static getLecturersByLanguageName(req: Request, res: Response) {
         const languageName: string = req.params.lanName;
         const languagesPerId: Language[] = languages.filter((language: Language) => language.name === languageName);
