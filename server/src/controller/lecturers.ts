@@ -9,7 +9,7 @@ export abstract class LecturersController {
         const lecturersInformation = lecturers.map((lecturer: Lecturer) => {
             const languagesNames = lecturer.languages.map((languageNum: number) => {
                 const language = languages.find(language =>
-                    language.id===languageNum);
+                    language.id === languageNum);
                 return language?.name;
             })
             return {...lecturer, languages: languagesNames}
@@ -25,9 +25,13 @@ export abstract class LecturersController {
 
     static getLecturersByLanguageName(req: Request, res: Response) {
         const languageName: string = req.params.lanName;
-        const languagesPerId: Language[] = languages.filter((language: Language) => language.name === languageName);
-        const languageId: number = languagesPerId[0].id; //guess that there is one id per language name, so take the first one.
-        let lecturersByLanguageId: Lecturer[] = lecturers.filter((lecturer: Lecturer) => lecturer.languages.includes(languageId));
-        res.status(200).json({lecturersByLanguageId: lecturersByLanguageId});
+        const languageObjectByName: Language | null = languages.find((language: Language) => language.name === languageName) || null;
+        const languageId: number | null = languageObjectByName?.id || null; //guess that there is one id per language name, so take the first one.
+        if (languageId != null) {
+            let lecturersByLanguageId: Lecturer[] = lecturers.filter((lecturer: Lecturer) => lecturer.languages.includes(languageId));
+            res.status(200).json({lecturersByLanguageId: lecturersByLanguageId});
+        } else {
+            res.status(200).json(null);
+        }
     }
 }
