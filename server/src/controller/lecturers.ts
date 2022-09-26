@@ -6,7 +6,15 @@ import {Lecturer} from "../models/Lecturer";
 export abstract class LecturersController {
 
     static getLecturers(req: Request, res: Response) {
-        res.status(200).json({lecturers: lecturers});
+        const lecturersInformation = lecturers.map((lecturer: Lecturer) => {
+            const languagesNames = lecturer.languages.map((languageNum: number) => {
+                const language = languages.find(language =>
+                    language.id===languageNum);
+                return language?.name;
+            })
+            return {...lecturer, languages: languagesNames}
+        });
+        res.status(200).json({lecturers: lecturersInformation});
     }
 
     static getLanguagesNames(req: Request, res: Response) {
