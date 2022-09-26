@@ -1,0 +1,10 @@
+<div class="badges-container">
+  <a href="#" class="badge badge-dark" (click)="onSelectedLanguageChanged('')"
+     [class]="selectedLanguage===''? 'badge--selected' : ''">
+    All
+  </a>
+  <a *ngFor="let languageName of languagesList" href="#" class="badge" (click)="onSelectedLanguageChanged(languageName)"
+     [class]="selectedLanguage===languageName? 'badge--selected' : ''">
+    {{languageName}}
+  </a>
+</div>

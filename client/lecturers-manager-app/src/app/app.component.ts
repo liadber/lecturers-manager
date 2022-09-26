@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {DataStorageService} from "./shared/data-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -8,23 +8,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
   title = 'Lecturers Manager App';
-  language = "all"
 
-  constructor(private http: HttpClient) {
+  constructor(private dataStorageService: DataStorageService) {
   }
 
   ngOnInit() {
-    this.onFetchLecturers();
-  }
-
-  onFetchLecturers() {
-    this.fetchLecturers();
-  }
-
-  private fetchLecturers() {
-    this.http.get(`http://localhost:8080/lecturers/api/getLecturers`)
-      .subscribe(responseData => {
-          console.log(responseData);
-        })
+    this.dataStorageService.fetchLecturers();
+    this.dataStorageService.fetchLanguagesNames();
   }
 }

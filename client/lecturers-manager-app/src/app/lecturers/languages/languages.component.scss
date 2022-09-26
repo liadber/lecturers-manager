@@ -1,0 +1,23 @@
+.badges-container {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 16px;
+}
+
+.badge{
+  background-color: grey;
+  padding: 4px;
+  margin: 0 2px;
+}
+
+.badge:hover{
+  background-color: rgba(128, 128, 128, 0.78);
+  color: #333333;
+}
+
+.badge--selected{
+  background-color: rgba(0, 79, 0, 0.82);
+}

@@ -1,0 +1,64 @@
+<app-languages></app-languages>
+<div class="cards-container">
+  <div class="card list-card">
+    <h5>Lectures</h5>
+    <div class="list-group">
+      <a *ngFor="let lecturer of lecturersList" href="#" (click)="selectedLecturer=lecturer"
+         [class]="selectedLecturer===lecturer? 'active' : ''"
+         class="list-group-item list-group-item-action">{{lecturer.name}}</a>
+      <a *ngIf="lecturersList.length===0"
+         class="list-group-item list-group-item-action disabled">0 lecturers.</a>
+    </div>
+  </div>
+
+  <div class="card details-card">
+    <h5>Lecturer's information</h5>
+    <table *ngIf="lecturersList.length>0" class="table table-user-information">
+      <tr>
+        <td>
+          <strong>
+            Identificacion
+          </strong>
+        </td>
+        <td class="text-primary">
+          {{selectedLecturer?.id}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            Name
+          </strong>
+        </td>
+        <td class="text-primary">
+          {{selectedLecturer?.name}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            Email
+          </strong>
+        </td>
+        <td class="text-primary">
+          {{selectedLecturer?.email}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            Languages
+          </strong>
+        </td>
+        <td class="text-primary">
+          {{selectedLecturer?.languages.join(',\t')}}
+        </td>
+      </tr>
+    </table>
+    <table *ngIf="lecturersList.length===0">
+      <tr>
+        There aren't lecturers on this language. Please choose a different language.
+      </tr>
+    </table>
+  </div>
+</div>
