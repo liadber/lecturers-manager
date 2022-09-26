@@ -1,0 +1,154 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 10px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #004f00;
+  color: white;
+  font-weight: 600;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-tags-container {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 16px;
+}
+
+.cards-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 6px;
+}
+
+.card {
+  border-radius: 4px;
+  border: 1px solid rgba(47, 47, 47, 0.35);
+  background-color: rgba(143, 143, 143, 0.15);
+  margin: 0 2px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.filter-tag{
+  padding: 4px;
+  margin: 0 2px;
+}
+
+.list-card{
+  flex-grow: 1;
+}
+
+.details-card{
+  flex-grow: 2;
+}
+
+.cards-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.filter-tags-container .filter-tag:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.filter-tags-container .filter-tag:not(.highlight-card):hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filter-tags-container .filter-tag:not(.highlight-card):hover path {
+  fill: rgb(105, 103, 103);
+}
+
+.filter-tag.highlight-card {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.filter-tag.filter-tag.highlight-card span {
+  margin-left: 60px;
+}
+
+.filter-tag > a,
+.filter-tag > a:visited,
+.filter-tag > a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.filter-tag > a:hover {
+  color: #125699;
+}
+
+footer {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+  .filter-tag:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
+  }
+
+  .filter-tag.highlight-card span {
+    margin-left: 72px;
+  }
+}
