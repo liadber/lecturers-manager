@@ -4,3 +4,9 @@ export interface Lecturer {
     email: string,
     languages: number[]
 }
+export interface LecturerWithLanguagesNames {
+    id: string,
+    name: string,
+    email: string,
+    languages: string[]
+}

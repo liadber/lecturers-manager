@@ -25,7 +25,7 @@ export const languages: Language[] = [
     }, {
         id: 5, name: "Angular"
     }, {
-        "id": 7, "name": "Kotlin"
+        id: 7, name: "Kotlin"
     }, {
         id: 7, name: "Dart"
     }, {
