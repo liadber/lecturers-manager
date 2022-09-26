@@ -33,6 +33,7 @@ export class LanguagesComponent implements OnInit, OnDestroy {
       this.selectedLanguage = lanName;
       this.dataStorageService.getLanguagesByLecturer(this.selectedLanguage);
     } else {
+      this.selectedLanguage = '';
       this.dataStorageService.fetchLecturers();
     }
   }
